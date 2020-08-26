@@ -6,19 +6,28 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      {{auth}}
+      <div class="test">{{msg}}</div>
+      <p v-text="text"></p>
+      <ul>
+        <li>{{msg}}</li>
+        <li><h1>{{auth}}</h1></li>
+        <li><p>{{msg}}</p></li>
+      </ul>
+      <input type="text" v-model="model" />
+    </div>
     <script src="./core/observer.js"></script>
+    <script src="./core/compiler.js"></script>
     <script src="./core/vue.js"></script>
     <script>
       const vm = new Vue({
         el: '#app',
         data: {
-          msg: {
-            msg2: {
-              msg3: 'hh'
-            }
-          },
-          auth: 'Mirai 白'
+          msg: 'Hello Vue',
+          auth: 'Mirai 白',
+          text: '我是 v-text',
+          model: '我是 v-model'
         }
       })
     </script>

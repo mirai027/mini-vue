@@ -1,6 +1,6 @@
 class Vue {
   constructor(options) {
-    // 1. 保持 options的数据
+    // 1. 保存 options的数据
     this.$options = options || {}
     this.$data = options.data || {}
     this.$el = typeof options.el === 'string' ? document.querySelector(options.el) : options.el
@@ -8,6 +8,8 @@ class Vue {
     this._proxyData(this.$data)
     // 3. 调用 Observer类，监听数据的变化
     new Observer(this.$data)
+    // 4. 调用 compiler类，解析指令和插值表达式
+    new Compiler(this)
   }
   _proxyData(data) {
     Object.keys(data).forEach(key => {

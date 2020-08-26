@@ -27,6 +27,7 @@ class Observer {
           return
         }
         value = newValue
+        // 如果新设置的值为对象，也转换成响应式数据
         that.walk(newValue)
       }
     })
