@@ -8,15 +8,17 @@
   <body>
     <div id="app">
       {{auth}}
-      <div class="test">{{msg}}</div>
-      <p v-text="text"></p>
+      <div class="test">{{auth}}</div>
+      <p v-text="auth"></p>
       <ul>
-        <li>{{msg}}</li>
+        <li>{{auth}}</li>
         <li><h1>{{auth}}</h1></li>
-        <li><p>{{msg}}</p></li>
+        <li><p>{{auth}}</p></li>
       </ul>
-      <input type="text" v-model="model" />
+      <input type="text" v-model="auth" />
     </div>
+    <script src="./core/dep.js"></script>
+    <script src="./core/watcher.js"></script>
     <script src="./core/observer.js"></script>
     <script src="./core/compiler.js"></script>
     <script src="./core/vue.js"></script>
@@ -24,10 +26,7 @@
       const vm = new Vue({
         el: '#app',
         data: {
-          msg: 'Hello Vue',
-          auth: 'Mirai 白',
-          text: '我是 v-text',
-          model: '我是 v-model'
+          auth: 'Mirai 白'
         }
       })
     </script>

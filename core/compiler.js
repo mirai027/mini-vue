@@ -43,17 +43,31 @@ class Compiler {
   update(node, key, attrName) {
     let updateFn = this[attrName + 'Updater']
     // 存在指令才执行对应方法
-    updateFn && updateFn(node, this.vm[key])
+    updateFn && updateFn.call(this, node, this.vm[key], key)
   }
 
   // 处理 v-text指令
-  textUpdater(node, value) {
+  textUpdater(node, value, key) {
     node.textContent = value
+
+    // 创建 Watcher对象，当数据改变时更新视图
+    new Watcher(this.vm, key, (newValue) => {
+      node.textContent = newValue
+    })
   }
 
   // 处理 v-model指令
-  modelUpdater(node, value) {
+  modelUpdater(node, value, key) {
     node.value = value
+
+    // 创建 Watcher对象，当数据改变时更新视图
+    new Watcher(this.vm, key, (newValue) => {
+      node.value = newValue
+    })
+    // 双向绑定
+    node.addEventListener('input', () => {
+      this.vm[key] = node.value
+    })
   }
 
   // 编译文本节点，处理插值表达式
@@ -64,6 +78,11 @@ class Compiler {
       // 只考虑一层的对象，如 data.msg = 'hello world'，不考虑嵌套的对象。且假设只有一个插值表达式。
       const key = RegExp.$1.trim()
       node.textContent = value.replace(reg, this.vm[key])
+
+      // 创建 Watcher对象，当数据改变时更新视图
+      new Watcher(this.vm, key, (newValue) => {
+        node.textContent = newValue
+      })
     }
   }
 
