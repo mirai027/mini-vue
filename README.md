@@ -3,7 +3,8 @@
 实现一个简单的 Vue.js。用于理解 Vue响应式原理，妈妈再也不用担心我不会用 Vue了！
 
 > 技术尚未成熟，只实现小部分功能。 --2020/08/27
->技术实现参考[拉勾教育「大前端高薪训练营」3天体验课](https://kaiwu.lagou.com/xunlianying/index.html?courseId=25#/course?weekId=1189)
+> 
+> 技术实现参考[拉勾教育「大前端高薪训练营」3天体验课](https://kaiwu.lagou.com/xunlianying/index.html?courseId=25#/course?weekId=1189)
 
 ## 完整版Vue响应式原理
 
